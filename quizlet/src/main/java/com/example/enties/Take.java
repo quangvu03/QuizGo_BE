@@ -1,9 +1,11 @@
 package com.example.enties;
 
+import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+@Serdeable
 
 @Entity
 @Table(name = "take", catalog = "")
@@ -12,22 +14,22 @@ public class Take {
     @Id
     @Column(name = "id", nullable = false)
     private long id;
-    @Basic
+    
     @Column(name = "userId", nullable = true)
     private Long userId;
-    @Basic
+    
     @Column(name = "quizId", nullable = true)
     private Long quizId;
-    @Basic
+    
     @Column(name = "status", nullable = true)
     private Byte status;
-    @Basic
+    
     @Column(name = "score", nullable = true)
     private Integer score;
-    @Basic
+    
     @Column(name = "startedAt", nullable = true)
     private Timestamp startedAt;
-    @Basic
+    
     @Column(name = "finishedAt", nullable = true)
     private Timestamp finishedAt;
 
