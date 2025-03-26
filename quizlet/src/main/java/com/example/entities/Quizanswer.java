@@ -1,4 +1,4 @@
-package com.example.enties;
+package com.example.entities;
 
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;

@@ -1,40 +1,37 @@
-package com.example.enties;
+package com.example.entities;
 
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 import java.util.Objects;
-
 @Serdeable
+
 @Entity
-@Table(name = "quiz", catalog = "")
-public class Quiz {
+@Table(name = "quizquestion", catalog = "")
+public class Quizquestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
     private long id;
-    @Basic
-    @Column(name = "userId", nullable = true)
-    private Long userId;
-    @Basic
+    
+    @Column(name = "quizId", nullable = true)
+    private Long quizId;
+    
     @Column(name = "title", nullable = true, length = 255)
     private String title;
-    @Basic
-    @Column(name = "type", nullable = false)
+    
+    @Column(name = "type", nullable = true)
     private String type;
-
-    @Column(name = "score", nullable = true)
-    private Integer score;
-
-    @Column(name = "createdAt", nullable = true)
-    private Timestamp createdAt;
-
-    @Column(name = "content", nullable = true, length = -1)
-    private String content;
-
+    
     @Column(name = "level", nullable = true)
     private Integer level;
+    
+    @Column(name = "createdAt", nullable = true)
+    private Timestamp createdAt;
+    
+    @Column(name = "content", nullable = true, length = -1)
+    private String content;
 
     public long getId() {
         return id;
@@ -44,12 +41,12 @@ public class Quiz {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getQuizId() {
+        return quizId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setQuizId(Long quizId) {
+        this.quizId = quizId;
     }
 
     public String getTitle() {
@@ -68,12 +65,12 @@ public class Quiz {
         this.type = type;
     }
 
-    public Integer getScore() {
-        return score;
+    public Integer getLevel() {
+        return level;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public Timestamp getCreatedAt() {
@@ -92,24 +89,16 @@ public class Quiz {
         this.content = content;
     }
 
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Quiz that = (Quiz) o;
-        return id == that.id && Objects.equals(userId, that.userId) && Objects.equals(title, that.title) && Objects.equals(type, that.type) && Objects.equals(score, that.score) && Objects.equals(createdAt, that.createdAt) && Objects.equals(content, that.content) && Objects.equals(level, that.level);
+        Quizquestion that = (Quizquestion) o;
+        return id == that.id && Objects.equals(quizId, that.quizId) && Objects.equals(title, that.title) && Objects.equals(type, that.type) && Objects.equals(level, that.level) && Objects.equals(createdAt, that.createdAt) && Objects.equals(content, that.content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, title, type, score, createdAt, content, level);
+        return Objects.hash(id, quizId, title, type, level, createdAt, content);
     }
 }
